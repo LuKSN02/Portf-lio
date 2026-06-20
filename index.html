@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lucas Neves — Dev</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="curtain"></div>
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+<canvas id="canvas-bg"></canvas>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-logo">lucas<b>.</b>dev</span>
+  <ul class="nav-links">
+    <li><a href="#projetos">Projetos</a></li>
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+  <div class="nav-pill">
+    <div class="nav-pill-dot"></div>
+    Disponível
+  </div>
+</nav>
+
+<div class="wrapper">
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <p class="hero-tag">Desenvolvedor Web · São Paulo, BR</p>
+
+    <h1 class="hero-title">
+      <span class="solid" id="ht1">Lucas</span>
+      <span class="strk" id="ht2">Neves</span>
+      <span class="strk-c" id="ht3">Developer</span>
+    </h1>
+
+    <div class="hero-bottom">
+      <p class="hero-desc">
+        Interfaces que vivem na interseção entre tecnologia, roleplay e dados.
+        Construindo experiências com Firebase, Three.js e muito código artesanal
+        — do dungeon ao dashboard.
+      </p>
+      <div class="hero-counters">
+        <div class="counter-item">
+          <div class="counter-num" data-target="3"><span>0</span></div>
+          <div class="counter-label">Projetos<br>online</div>
+        </div>
+        <div class="counter-item">
+          <div class="counter-num">∞<span style="color:var(--purple);font-size:1.5rem"> ☕</span></div>
+          <div class="counter-label">Café<br>consumido</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-scroll-ind">
+      <div class="scroll-track"></div>
+      Scroll para explorar
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-wrap reveal">
+    <div class="marquee-inner">
+      <div class="marquee-track" aria-hidden="true">
+        <span class="m-item"><span class="m-dot"></span>HTML · CSS · JS</span>
+        <span class="m-item"><span class="m-dot"></span>Firebase</span>
+        <span class="m-item"><span class="m-dot"></span>Firestore</span>
+        <span class="m-item"><span class="m-dot"></span>Three.js</span>
+        <span class="m-item"><span class="m-dot"></span>GitHub Pages</span>
+        <span class="m-item"><span class="m-dot"></span>Ordem Paranormal</span>
+        <span class="m-item"><span class="m-dot"></span>Realtime Database</span>
+        <span class="m-item"><span class="m-dot"></span>Canvas API</span>
+        <span class="m-item"><span class="m-dot"></span>CSS Animations</span>
+        <span class="m-item"><span class="m-dot"></span>Responsive Design</span>
+        <span class="m-item"><span class="m-dot"></span>WebGL</span>
+        <span class="m-item"><span class="m-dot"></span>Acessibilidade</span>
+      </div>
+      <div class="marquee-track" aria-hidden="true">
+        <span class="m-item"><span class="m-dot"></span>HTML · CSS · JS</span>
+        <span class="m-item"><span class="m-dot"></span>Firebase</span>
+        <span class="m-item"><span class="m-dot"></span>Firestore</span>
+        <span class="m-item"><span class="m-dot"></span>Three.js</span>
+        <span class="m-item"><span class="m-dot"></span>GitHub Pages</span>
+        <span class="m-item"><span class="m-dot"></span>Ordem Paranormal</span>
+        <span class="m-item"><span class="m-dot"></span>Realtime Database</span>
+        <span class="m-item"><span class="m-dot"></span>Canvas API</span>
+        <span class="m-item"><span class="m-dot"></span>CSS Animations</span>
+        <span class="m-item"><span class="m-dot"></span>Responsive Design</span>
+        <span class="m-item"><span class="m-dot"></span>WebGL</span>
+        <span class="m-item"><span class="m-dot"></span>Acessibilidade</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PROJECTS ── -->
+  <section id="projetos">
+    <div class="sec-sep reveal">
+      <span class="sec-num">01</span>
+      <div class="sec-line"></div>
+      <span class="sec-label">Projetos</span>
+    </div>
+
+    <div class="proj-header reveal">
+      <h2 class="proj-heading">O que eu <em>construí</em></h2>
+      <span class="proj-count">3 projetos · 2024–2026</span>
+    </div>
+
+    <div class="cards-grid">
+
+      <div class="reveal c-wrap" style="transition-delay:0.05s">
+        <div class="c-border">
+          <a class="card" href="https://luksn02.github.io/F.I.C.H.A./index.html" target="_blank" rel="noopener">
+            <div class="c-glow"></div>
+            <div class="c-top">
+              <div class="c-icon">🎲</div>
+              <span class="c-badge bp">VTT · RPG</span>
+            </div>
+            <h2 class="c-title">F.I.C.H.A.</h2>
+            <p class="c-desc">
+              Plataforma virtual de mesa para Ordem Paranormal. Ficha digital completa, mapa 3D procedural com Three.js, tokens em tempo real via Firebase e painel de campanhas com Firestore.
+            </p>
+            <div class="c-tags">
+              <span>Firebase</span><span>Three.js</span><span>JS</span><span>Firestore</span><span>Canvas</span>
+            </div>
+            <div class="c-foot">
+              <span class="c-url">luksn02.github.io/F.I.C.H.A.</span>
+              <div class="c-btn">Ver projeto <div class="c-btn-arrow">↗</div></div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="reveal c-wrap" style="transition-delay:0.12s">
+        <div class="c-border">
+          <a class="card" href="https://luksn02.github.io/Vida-IA/" target="_blank" rel="noopener">
+            <div class="c-glow"></div>
+            <div class="c-top">
+              <div class="c-icon">🤖</div>
+              <span class="c-badge bc">IA · Saúde</span>
+            </div>
+            <h2 class="c-title">VidaIA</h2>
+            <p class="c-desc">
+              Dashboard de saúde com IA. Acompanhamento de bem-estar, barra de acessibilidade com leitor de tela, filtros de cor, modo simplificado e suporte multilíngue.
+            </p>
+            <div class="c-tags">
+              <span>HTML/CSS/JS</span><span>IA</span><span>Acessibilidade</span><span>i18n</span>
+            </div>
+            <div class="c-foot">
+              <span class="c-url">luksn02.github.io/Vida-IA</span>
+              <div class="c-btn">Ver projeto <div class="c-btn-arrow">↗</div></div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="reveal c-wrap" style="transition-delay:0.19s">
+        <div class="c-border">
+          <a class="card" href="https://luksn02.github.io/VitaSense/" target="_blank" rel="noopener">
+            <div class="c-glow"></div>
+            <div class="c-top">
+              <div class="c-icon">💚</div>
+              <span class="c-badge bg">Saúde · Sensores</span>
+            </div>
+            <h2 class="c-title">VitaSense</h2>
+            <p class="c-desc">
+              Monitoramento de dados vitais e sensores em tempo real. Interface limpa e responsiva para visualização e análise de sinais biométricos com foco em UX.
+            </p>
+            <div class="c-tags">
+              <span>HTML/CSS/JS</span><span>Sensores</span><span>Dashboard</span><span>Tempo real</span>
+            </div>
+            <div class="c-foot">
+              <span class="c-url">luksn02.github.io/VitaSense</span>
+              <div class="c-btn">Ver projeto <div class="c-btn-arrow">↗</div></div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── ABOUT ── -->
+  <section id="sobre">
+    <div class="sec-sep reveal">
+      <span class="sec-num">02</span>
+      <div class="sec-line"></div>
+      <span class="sec-label">Sobre</span>
+    </div>
+
+    <div class="about-grid">
+      <div class="reveal">
+        <h2 class="about-title">Dev que cria<br>mundos <em>digitais</em></h2>
+        <div class="about-text">
+          <p>Apaixonado por RPG de mesa e pela ideia de que um bom sistema merece uma plataforma à altura. Desenvolvo projetos que unem narrativa, tecnologia e design.</p>
+          <p>Trabalho com HTML, CSS e JavaScript puro, integrando Firebase para dados em tempo real e Three.js para experiências 3D no browser — do dungeon ao dashboard.</p>
+        </div>
+      </div>
+      <div class="skills-grid reveal" style="transition-delay:0.1s">
+        <div class="sk-card">
+          <div class="sk-emoji">🔥</div>
+          <div class="sk-name">Firebase</div>
+          <div class="sk-sub">Realtime DB · Auth<br>Firestore · Hosting</div>
+          <div class="sk-bar"><div class="sk-bar-fill p" data-w="90"></div></div>
+        </div>
+        <div class="sk-card">
+          <div class="sk-emoji">🧊</div>
+          <div class="sk-name">Three.js</div>
+          <div class="sk-sub">3D no browser<br>WebGL · Procedural</div>
+          <div class="sk-bar"><div class="sk-bar-fill c" data-w="78"></div></div>
+        </div>
+        <div class="sk-card">
+          <div class="sk-emoji">🎨</div>
+          <div class="sk-name">CSS / Design</div>
+          <div class="sk-sub">Animações<br>Glassmorphism · Themes</div>
+          <div class="sk-bar"><div class="sk-bar-fill p" data-w="88"></div></div>
+        </div>
+        <div class="sk-card">
+          <div class="sk-emoji">🎲</div>
+          <div class="sk-name">Game Design</div>
+          <div class="sk-sub">VTT · RPG systems<br>Ordem Paranormal</div>
+          <div class="sk-bar"><div class="sk-bar-fill c" data-w="95"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTACT ── -->
+  <section id="contato">
+    <div class="sec-sep reveal">
+      <span class="sec-num">03</span>
+      <div class="sec-line"></div>
+      <span class="sec-label">Contato</span>
+    </div>
+
+    <div class="contact-wrap reveal">
+      <h2>
+        <span class="cv">Vamos</span><br>
+        <span class="ce">conversar?</span>
+      </h2>
+      <p class="contact-sub">Aberto a colaborações, freelas e boas ideias.</p>
+      <div class="contact-btns">
+        <a class="cbtn cbtn-primary" href="https://github.com/luksn02" target="_blank" rel="noopener">↗ GitHub</a>
+        <a class="cbtn cbtn-ghost" href="https://discord.com/users/luka_00000" target="_blank" rel="noopener">✦ Discord</a>
+        <a class="cbtn cbtn-ghost" href="mailto:trajano.neves01@gmail.com">✉ Email</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Feito por <span>Lucas Neves</span> · São Paulo, BR</p>
+    <div class="footer-line">
+      <p>© 2026</p>
+      <div class="f-dot"></div>
+      <p><span>lucas.dev</span></p>
+    </div>
+  </footer>
+
+</div>
+<script src="script.js"></script>
+</body>
+</html>
