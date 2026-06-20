@@ -178,10 +178,29 @@ document.querySelectorAll('.cbtn').forEach(btn=>{
   });
 });
 
+/* ── MOBILE MENU ── */
+(function(){
+  const burger=document.getElementById('navBurger');
+  const menu=document.getElementById('mobileMenu');
+  if(!burger||!menu)return;
+  function closeMenu(){
+    menu.classList.remove('open');
+    burger.classList.remove('open');
+    burger.setAttribute('aria-expanded','false');
+  }
+  burger.addEventListener('click',()=>{
+    const open=menu.classList.toggle('open');
+    burger.classList.toggle('open',open);
+    burger.setAttribute('aria-expanded',open?'true':'false');
+  });
+  menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+  window.addEventListener('resize',()=>{if(window.innerWidth>800)closeMenu()});
+})();
+
 /* ── NAV ACTIVE ── */
 (function(){
   const secs=document.querySelectorAll('section[id]');
-  const links=document.querySelectorAll('.nav-links a');
+  const links=document.querySelectorAll('.nav-links a, .mobile-menu a');
   window.addEventListener('scroll',()=>{
     let cur='';
     secs.forEach(s=>{if(window.scrollY>=s.offsetTop-130)cur=s.id});

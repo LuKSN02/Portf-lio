@@ -55,6 +55,13 @@ body{
 body:has(a:hover) #cursor{transform:translate(-50%,-50%) scale(2);background:var(--cyan)}
 body:has(a:hover) #cursor-ring{width:56px;height:56px;border-color:rgba(0,229,255,0.4)}
 
+/* on touch devices there's no mousemove, so the custom cursor would
+   otherwise sit frozen in the center of the screen — hide it */
+@media(pointer:coarse){
+  body{cursor:auto}
+  #cursor,#cursor-ring{display:none}
+}
+
 /* ── NOISE ── */
 body::after{
   content:'';position:fixed;inset:0;
@@ -111,6 +118,42 @@ nav{
   animation:blink 2s ease-in-out infinite;
 }
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0.25}}
+
+/* ── MOBILE NAV ── */
+.nav-burger{
+  display:none;flex-direction:column;justify-content:center;gap:5px;
+  width:34px;height:34px;background:none;border:none;padding:0;
+  cursor:pointer;z-index:600;flex-shrink:0;
+}
+.nav-burger span{
+  display:block;width:100%;height:2px;background:var(--text);
+  transition:transform 0.3s ease,opacity 0.3s ease;
+}
+.nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-burger.open span:nth-child(2){opacity:0}
+.nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+.mobile-menu{
+  position:fixed;top:60px;left:0;right:0;z-index:499;
+  display:flex;flex-direction:column;
+  background:rgba(6,6,14,0.97);
+  backdrop-filter:blur(24px) saturate(1.5);
+  border-bottom:1px solid var(--border);
+  max-height:0;overflow:hidden;
+  transition:max-height 0.4s cubic-bezier(0.16,1,0.3,1);
+}
+.mobile-menu.open{max-height:320px}
+.mobile-menu a{
+  font-family:'Space Mono',monospace;
+  font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--muted2);text-decoration:none;
+  padding:1.1rem 1.5rem;border-bottom:1px solid var(--border2);
+  transition:color 0.2s,background 0.2s;
+}
+.mobile-menu a:last-child{border-bottom:none}
+.mobile-menu a:hover,
+.mobile-menu a.active{color:var(--text);background:rgba(123,79,255,0.07)}
+@media(min-width:801px){.mobile-menu{display:none}}
 
 /* ── WRAPPER ── */
 .wrapper{position:relative;z-index:1;max-width:1140px;margin:0 auto;padding:0 2.5rem}
@@ -568,15 +611,36 @@ footer p span{color:var(--purple)}
 @media(max-width:800px){
   nav{padding:0 1.25rem}
   .nav-links{display:none}
+  .nav-burger{display:flex}
+  .hero{min-height:100svh;padding:6.5rem 0 4rem}
   .wrapper{padding:0 1.25rem}
   .hero-title{font-size:clamp(3.2rem,16vw,5.5rem)}
   .hero-bottom{grid-template-columns:1fr;gap:2rem}
-  .hero-counters{justify-content:flex-start}
+  .hero-counters{justify-content:flex-start;gap:2.25rem}
   .counter-item{text-align:left}
+  .sec-sep{padding:4rem 0 2.5rem;gap:1rem}
+  .proj-header{flex-direction:column;align-items:flex-start;gap:0.6rem}
   .about-grid{grid-template-columns:1fr}
   .me-grid{grid-template-columns:1fr}
   .me-cards{grid-template-columns:1fr 1fr}
   .cards-grid{grid-template-columns:1fr}
+  .card{padding:1.65rem 1.4rem}
+  .contact-btns{flex-direction:column;align-items:stretch;gap:0.75rem}
+  .cbtn{justify-content:center}
+  footer{flex-direction:column;text-align:center}
+}
+@media(max-width:480px){
+  nav{padding:0 1rem}
+  .nav-pill-text{display:none}
+  .nav-pill{padding:6px;gap:0}
+  .wrapper{padding:0 1.1rem}
+  .hero-title{font-size:clamp(2.6rem,15vw,4rem)}
+  .hero-desc{font-size:0.9rem;padding-left:1rem}
+  .hero-counters{gap:1.75rem}
+  .counter-num{font-size:2.3rem}
+  .skills-grid{grid-template-columns:1fr}
+  .me-cards{grid-template-columns:1fr}
+  .c-title{font-size:1.5rem}
 }
 @media(prefers-reduced-motion:reduce){
   .c-border{animation:none;background:var(--border);padding:1px}
