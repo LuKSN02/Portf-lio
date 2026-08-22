@@ -377,6 +377,7 @@ nav{
 .bp{color:var(--purple);background:rgba(123,79,255,0.08);border-color:rgba(123,79,255,0.22)}
 .bc{color:var(--cyan);background:rgba(0,229,255,0.06);border-color:rgba(0,229,255,0.18)}
 .bg{color:var(--green);background:rgba(74,255,140,0.06);border-color:rgba(74,255,140,0.18)}
+.bpk{color:var(--pink);background:rgba(255,79,216,0.06);border-color:rgba(255,79,216,0.18)}
 
 .c-title{
   font-family:'Syne',sans-serif;font-weight:800;
