@@ -456,7 +456,7 @@ nav{
 }
 .me-card:hover{border-color:rgba(0,229,255,0.25);transform:translateY(-3px)}
 .me-card:hover::after{opacity:1}
-.me-icon{font-size:1.3rem;position:relative;z-index:1}
+.me-icon{font-size:1.3rem;position:relative;z-index:1;display:inline-flex}
 .me-label{
   font-family:'Space Mono',monospace;
   font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;
@@ -498,7 +498,7 @@ nav{
 }
 .sk-card:hover{border-color:rgba(123,79,255,0.25);transform:translateY(-3px)}
 .sk-card:hover::after{opacity:1}
-.sk-emoji{font-size:1.3rem;margin-bottom:0.65rem}
+.sk-emoji{font-size:1.3rem;margin-bottom:0.65rem;display:inline-flex}
 .sk-name{
   font-family:'Syne',sans-serif;font-weight:700;
   font-size:0.92rem;margin-bottom:0.3rem;

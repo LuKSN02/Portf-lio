@@ -65,7 +65,13 @@
           <div class="counter-label">Projetos<br>online</div>
         </div>
         <div class="counter-item">
-          <div class="counter-num">∞<span style="color:var(--purple);font-size:1.5rem"> ☕</span></div>
+          <div class="counter-num">∞<span style="color:var(--purple);display:inline-flex;vertical-align:middle;margin-left:0.3rem">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 8h13a3 3 0 0 1 0 6h-1"/>
+              <path d="M4 8v7a4 4 0 0 0 4 4h5a4 4 0 0 0 4-4V8"/>
+              <path d="M8 2c0 .8-.5 1-.5 2S8 5.2 8 6M12 2c0 .8-.5 1-.5 2s.5 1.2.5 2"/>
+            </svg>
+          </span></div>
           <div class="counter-label">Café<br>consumido</div>
         </div>
       </div>
@@ -129,22 +135,44 @@
       </div>
       <div class="me-cards reveal" style="transition-delay:0.1s">
         <div class="me-card">
-          <span class="me-icon">🧑‍💻</span>
+          <span class="me-icon" style="color:var(--purple)">
+            <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="4" width="20" height="14" rx="2"/>
+              <path d="m8 10 2 2-2 2M13 14h3"/>
+            </svg>
+          </span>
           <span class="me-label">Nome completo</span>
           <span class="me-value">Lucas Neves Trajano Dias</span>
         </div>
         <div class="me-card">
-          <span class="me-icon">🎂</span>
+          <span class="me-icon" style="color:var(--pink)">
+            <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 8v3M9 5.5a1.5 1.5 0 1 1 3 0c0 .9-1.5 2-1.5 2s-1.5-1.1-1.5-2ZM12 5.5a1.5 1.5 0 1 1 3 0c0 .9-1.5 2-1.5 2"/>
+              <rect x="4" y="11" width="16" height="9" rx="2"/>
+              <path d="M4 15h16"/>
+            </svg>
+          </span>
           <span class="me-label">Idade</span>
           <span class="me-value">18 anos</span>
         </div>
         <div class="me-card">
-          <span class="me-icon">🎓</span>
+          <span class="me-icon" style="color:var(--cyan)">
+            <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="m2 9 10-5 10 5-10 5-10-5Z"/>
+              <path d="M6 11.5V16c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5v-4.5M22 9v6"/>
+            </svg>
+          </span>
           <span class="me-label">Formação</span>
           <span class="me-value">Des. de Sistemas — E.E. Amaral Wagner</span>
         </div>
         <div class="me-card">
-          <span class="me-icon">🎯</span>
+          <span class="me-icon" style="color:var(--green)">
+            <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="9"/>
+              <circle cx="12" cy="12" r="5"/>
+              <circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"/>
+            </svg>
+          </span>
           <span class="me-label">Foco</span>
           <span class="me-value">Front-end · Web Development</span>
         </div>
@@ -172,7 +200,14 @@
           <a class="card" href="https://luksn02.github.io/F.I.C.H.A./index.html" target="_blank" rel="noopener">
             <div class="c-glow"></div>
             <div class="c-top">
-              <div class="c-icon">🎲</div>
+              <div class="c-icon" style="color:var(--purple)">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="3" y="3" width="18" height="18" rx="3.5"/>
+                  <circle cx="8" cy="8" r="1" fill="currentColor" stroke="none"/>
+                  <circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"/>
+                  <circle cx="16" cy="16" r="1" fill="currentColor" stroke="none"/>
+                </svg>
+              </div>
               <span class="c-badge bp">VTT · RPG</span>
             </div>
             <h2 class="c-title">F.I.C.H.A.</h2>
@@ -195,7 +230,11 @@
           <a class="card" href="https://luksn02.github.io/G.K.IO/" target="_blank" rel="noopener">
             <div class="c-glow"></div>
             <div class="c-top">
-              <div class="c-icon">💬</div>
+              <div class="c-icon" style="color:var(--cyan)">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5c-1.2 0-2.35-.26-3.38-.73L4 21l1.34-4.02A8.44 8.44 0 0 1 3.5 12 8.5 8.5 0 0 1 12 3.5h.5A8.5 8.5 0 0 1 21 11.5Z"/>
+                </svg>
+              </div>
               <span class="c-badge bc">Chat · Realtime</span>
             </div>
             <h2 class="c-title">G.K.IO</h2>
@@ -215,21 +254,28 @@
 
       <div class="reveal c-wrap" style="transition-delay:0.19s">
         <div class="c-border">
-          <a class="card" href="https://luksn02.github.io/ARENA/" target="_blank" rel="noopener">
+          <a class="card" href="https://luksn02.github.io/Nexus-Arena/" target="_blank" rel="noopener">
             <div class="c-glow"></div>
             <div class="c-top">
-              <div class="c-icon">🎮</div>
-              <span class="c-badge bpk">E-sports · Portal</span>
+              <div class="c-icon" style="color:var(--pink)">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M7.5 8.5h9a4.5 4.5 0 0 1 4.44 5.24l-.55 3.3a2.4 2.4 0 0 1-4.32.98L14.5 15.5h-5l-1.57 2.52a2.4 2.4 0 0 1-4.32-.98l-.55-3.3A4.5 4.5 0 0 1 7.5 8.5Z"/>
+                  <path d="M8.5 11v3M7 12.5h3"/>
+                  <circle cx="16" cy="11.5" r="0.9" fill="currentColor" stroke="none"/>
+                  <circle cx="18" cy="13.5" r="0.9" fill="currentColor" stroke="none"/>
+                </svg>
+              </div>
+              <span class="c-badge bpk">E-sports · Notícias & Loja</span>
             </div>
-            <h2 class="c-title">Arena</h2>
+            <h2 class="c-title">Nexus Arena</h2>
             <p class="c-desc">
-              Portal fictício de notícias de e-sports em dark mode: chaveamento de campeonatos, feed de atividades de jogadores seguidos, diretório de streamers parceiros, ranking, mensagens diretas, loja e inventário — com suporte PWA offline.
+              Portal de notícias de e-sports com cobertura de League of Legends, CS2, Valorant e mais, integrado a uma loja de periféricos gamers com carrinho e checkout. Login/cadastro em tempo real via Firebase Auth, dados em Firestore e suporte PWA offline — zero emojis, só SVG.
             </p>
             <div class="c-tags">
-              <span>HTML/CSS/JS</span><span>PWA</span><span>LocalStorage</span><span>UI</span>
+              <span>HTML/CSS/JS</span><span>Firebase</span><span>PWA</span><span>Loja Virtual</span>
             </div>
             <div class="c-foot">
-              <span class="c-url">luksn02.github.io/ARENA</span>
+              <span class="c-url">luksn02.github.io/Nexus-Arena</span>
               <div class="c-btn">Ver projeto <div class="c-btn-arrow">↗</div></div>
             </div>
           </a>
@@ -241,7 +287,14 @@
           <a class="card" href="https://luksn02.github.io/3DeT-Victory-System/" target="_blank" rel="noopener">
             <div class="c-glow"></div>
             <div class="c-top">
-              <div class="c-icon">🐉</div>
+              <div class="c-icon" style="color:var(--purple)">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="14.5 17.5 3 6 3 3 6 3 17.5 14.5"/>
+                  <line x1="13" y1="19" x2="19" y2="13"/>
+                  <line x1="16" y1="16" x2="20" y2="20"/>
+                  <line x1="19" y1="21" x2="21" y2="19"/>
+                </svg>
+              </div>
               <span class="c-badge bp">VTT · RPG</span>
             </div>
             <h2 class="c-title">3DeT System</h2>
@@ -264,7 +317,12 @@
           <a class="card" href="https://luksn02.github.io/VitaSense/" target="_blank" rel="noopener">
             <div class="c-glow"></div>
             <div class="c-top">
-              <div class="c-icon">💚</div>
+              <div class="c-icon" style="color:var(--green)">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z"/>
+                  <path d="M3.22 12H9.5l1.5-2 2 4 1.5-2h6.28"/>
+                </svg>
+              </div>
               <span class="c-badge bg">Saúde · Sensores</span>
             </div>
             <h2 class="c-title">VitaSense</h2>
@@ -303,25 +361,48 @@
       </div>
       <div class="skills-grid reveal" style="transition-delay:0.1s">
         <div class="sk-card">
-          <div class="sk-emoji">🔥</div>
+          <div class="sk-emoji" style="color:var(--purple)">
+            <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 2c1 3-3 4-3 8a3 3 0 0 0 6 0c1 1 1.5 2.3 1.5 3.5A5.5 5.5 0 0 1 11 19a5.5 5.5 0 0 1-4.9-8c.6 1 1.4 1.3 1.9 1-1-2.5.4-5 2-6 0 1 .5 1.7 2 3.5C12.3 8 12 5 12 2Z"/>
+            </svg>
+          </div>
           <div class="sk-name">Firebase</div>
           <div class="sk-sub">Realtime DB · Auth<br>Firestore · Hosting</div>
           <div class="sk-bar"><div class="sk-bar-fill p" data-w="90"></div></div>
         </div>
         <div class="sk-card">
-          <div class="sk-emoji">🧊</div>
+          <div class="sk-emoji" style="color:var(--cyan)">
+            <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 8v8l-9 5-9-5V8l9-5 9 5Z"/>
+              <path d="M3 8l9 5 9-5M12 13v8"/>
+            </svg>
+          </div>
           <div class="sk-name">Three.js</div>
           <div class="sk-sub">3D no browser<br>WebGL · Procedural</div>
           <div class="sk-bar"><div class="sk-bar-fill c" data-w="78"></div></div>
         </div>
         <div class="sk-card">
-          <div class="sk-emoji">🎨</div>
+          <div class="sk-emoji" style="color:var(--purple)">
+            <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 21a9 9 0 1 1 0-18c4 0 8 2.5 8 6.5 0 2.2-1.8 3.5-3.5 3.5H15a1.8 1.8 0 0 0-1.3 3.1c.4.4.6.9.6 1.4 0 1.4-1.2 2.5-2.3 2.5Z"/>
+              <circle cx="7.5" cy="11" r="1" fill="currentColor" stroke="none"/>
+              <circle cx="9.5" cy="7" r="1" fill="currentColor" stroke="none"/>
+              <circle cx="14.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+            </svg>
+          </div>
           <div class="sk-name">CSS / Design</div>
           <div class="sk-sub">Animações<br>Glassmorphism · Themes</div>
           <div class="sk-bar"><div class="sk-bar-fill p" data-w="88"></div></div>
         </div>
         <div class="sk-card">
-          <div class="sk-emoji">🎲</div>
+          <div class="sk-emoji" style="color:var(--cyan)">
+            <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="3.5"/>
+              <circle cx="8" cy="8" r="1" fill="currentColor" stroke="none"/>
+              <circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"/>
+              <circle cx="16" cy="16" r="1" fill="currentColor" stroke="none"/>
+            </svg>
+          </div>
           <div class="sk-name">Game Design</div>
           <div class="sk-sub">VTT · RPG systems<br>Ordem Paranormal</div>
           <div class="sk-bar"><div class="sk-bar-fill c" data-w="95"></div></div>
@@ -346,8 +427,19 @@
       <p class="contact-sub">Aberto a colaborações, freelas e boas ideias.</p>
       <div class="contact-btns">
         <a class="cbtn cbtn-primary" href="https://github.com/luksn02" target="_blank" rel="noopener">↗ GitHub</a>
-        <a class="cbtn cbtn-ghost" href="https://discord.com/users/luka_00000" target="_blank" rel="noopener">✦ Discord</a>
-        <a class="cbtn cbtn-ghost" href="mailto:trajano.neves01@gmail.com">✉ Email</a>
+        <a class="cbtn cbtn-ghost" href="https://discord.com/users/luka_00000" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 20V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H8l-4 4Z"/>
+          </svg>
+          Discord
+        </a>
+        <a class="cbtn cbtn-ghost" href="mailto:trajano.neves01@gmail.com">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="14" rx="2"/>
+            <path d="m3.5 6 8.5 7 8.5-7"/>
+          </svg>
+          Email
+        </a>
       </div>
     </div>
   </section>
