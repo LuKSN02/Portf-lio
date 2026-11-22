@@ -2,16 +2,37 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Lucas Neves — Desenvolvedor Web</title>
 <meta name="description" content="Portfólio de Lucas Neves, desenvolvedor front-end em São Paulo. Apps em tempo real, plataformas de RPG de mesa e interfaces com Firebase e Three.js.">
 <meta name="theme-color" content="#07070d">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Lucas Neves">
+<meta property="og:title" content="Lucas Neves — Desenvolvedor Web">
+<meta property="og:description" content="Desenvolvedor front-end em São Paulo. Apps em tempo real, mesas virtuais de RPG e interfaces com Firebase e Three.js.">
+<meta property="og:image" content="https://luksn02.github.io/Portf-lio/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Lucas Neves, desenvolvedor web. Interfaces em tempo real, 3D no navegador e ferramentas para RPG de mesa.">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Lucas Neves — Desenvolvedor Web">
+<meta name="twitter:description" content="Desenvolvedor front-end em São Paulo. Apps em tempo real, mesas virtuais de RPG e interfaces com Firebase e Three.js.">
+<meta name="twitter:image" content="https://luksn02.github.io/Portf-lio/og-image.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2307070d'/%3E%3Ccircle cx='16' cy='16' r='5' fill='%237b4fff'/%3E%3C/svg%3E">
 <link rel="preload" href="fonts/syne-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="style.css">
 <script>
-  /* liga a abertura antes da primeira pintura; com "reduzir movimento" ou sem JS ela não aparece */
-  try{if(!matchMedia('(prefers-reduced-motion:reduce)').matches)document.documentElement.classList.add('intro-on')}catch(e){}
+  /* marca que há JS (o d20 só aparece com ele) e liga a abertura antes da primeira pintura;
+     com "reduzir movimento" a abertura não aparece */
+  (function(){
+    var h=document.documentElement;h.classList.add('js');
+    try{var th=localStorage.getItem('theme');h.dataset.theme=(th==='light'||th==='amoled')?th:'dark';
+      var m=document.querySelector('meta[name="theme-color"]');if(m&&th==='light')m.content='#f7f6fb';if(m&&th==='amoled')m.content='#000000'}
+    catch(e){h.dataset.theme='dark'}
+    try{if(!matchMedia('(prefers-reduced-motion:reduce)').matches)h.classList.add('intro-on')}catch(e){}
+  })();
 </script>
 </head>
 <body>
@@ -21,17 +42,25 @@
   <i class="intro-line"></i>
 </div>
 
-<a class="skip" href="#projetos">Ir para os projetos</a>
+<a class="skip" href="#projetos" data-i18n="skip">Ir para os projetos</a>
 
 <header class="top">
   <div class="top-in">
-    <a class="logo" href="#topo" aria-label="Lucas Neves, início">lucas<b>.</b>dev</a>
-    <nav aria-label="Principal">
-      <a href="#projetos">Projetos</a>
-      <a href="#sobre">Sobre</a>
-      <a href="#contato">Contato</a>
+    <a class="logo" href="#topo" aria-label="Lucas Neves, início" data-i18n-attr="aria-label:aria.home">lucas<b>.</b>dev</a>
+    <nav aria-label="Principal" data-i18n-attr="aria-label:aria.nav">
+      <a href="#projetos" data-i18n="nav.projects">Projetos</a>
+      <a href="#sobre" data-i18n="nav.about">Sobre</a>
+      <a href="#contato" data-i18n="nav.contact">Contato</a>
     </nav>
-    <p class="status"><i></i>Disponível</p>
+    <div class="top-end">
+      <p class="status"><i></i><span data-i18n="status">Disponível</span></p>
+      <button class="theme" id="theme" type="button" aria-label="Mudar para o tema AMOLED">
+        <svg class="i-black" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="8"/></svg>
+        <svg class="i-sun" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="i-moon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+      </button>
+      <button class="lang" id="lang" type="button" aria-label="Switch to English" lang="en">EN</button>
+    </div>
   </div>
   <div class="progress" aria-hidden="true"><i id="progress"></i></div>
 </header>
@@ -43,43 +72,46 @@
     <div class="wrap hero-wrap">
 
       <div class="hero-stage">
-        <canvas class="orb" id="orb" aria-hidden="true"></canvas>
-
-        <p class="hero-role rise" style="--d:0s">Desenvolvedor web · São Paulo, BR</p>
+        <p class="hero-role rise" style="--d:0s" data-i18n="hero.role">Desenvolvedor web · São Paulo, BR</p>
         <h1 id="nome" class="hero-name">
           <span class="rise" style="--d:.1s">Lucas</span>
           <span class="rise out" style="--d:.2s">Neves</span>
         </h1>
-        <p class="hero-lead rise" style="--d:.35s">
-          Interfaces que vivem na interseção entre tecnologia, roleplay e dados.
-          Construo com Firebase, Three.js e muito código artesanal, do dungeon ao dashboard.
-        </p>
+        <p class="hero-lead rise" style="--d:.35s" data-i18n="hero.lead">Interfaces que vivem na interseção entre tecnologia, roleplay e dados. Construo com Firebase, Three.js e muito código artesanal, do dungeon ao dashboard.</p>
         <p class="hero-actions rise" style="--d:.45s">
-          <a class="btn btn-solid" href="#projetos">Ver projetos</a>
-          <a class="btn" href="#contato">Falar comigo</a>
+          <a class="btn btn-solid" href="#projetos" data-i18n="hero.cta1">Ver projetos</a>
+          <a class="btn" href="#contato" data-i18n="hero.cta2">Falar comigo</a>
         </p>
+
+        <!-- d20 interativo -->
+        <div class="d20" id="d20-wrap">
+          <button class="d20-btn" id="d20" type="button" aria-label="Rolar um d20" data-i18n-attr="aria-label:d20.aria">
+            <canvas class="orb" id="orb" aria-hidden="true"></canvas>
+          </button>
+          <p class="d20-out" id="d20-out" role="status" aria-live="polite"></p>
+        </div>
       </div>
 
       <dl class="facts rise" style="--d:.6s">
-        <div><dt>Base</dt><dd>São Paulo, BR</dd></div>
-        <div><dt>Foco</dt><dd>Front-end</dd></div>
-        <div><dt>Stack</dt><dd>Firebase, Three.js, JS puro</dd></div>
-        <div><dt>Agenda</dt><dd>Aberto a freelas</dd></div>
+        <div><dt data-i18n="f.base">Base</dt><dd data-i18n="v.base">São Paulo, BR</dd></div>
+        <div><dt data-i18n="f.focus">Foco</dt><dd>Front-end</dd></div>
+        <div><dt>Stack</dt><dd data-i18n="v.stack">Firebase, Three.js, JS puro</dd></div>
+        <div><dt data-i18n="f.work">Trabalho</dt><dd>Home office</dd></div>
       </dl>
 
     </div>
   </section>
 
   <!-- ── STACK ── -->
-  <section class="stack" aria-label="Tecnologias">
+  <section class="stack" aria-label="Tecnologias" data-i18n-attr="aria-label:aria.stack">
     <ul class="wrap">
-      <li>HTML, CSS e JavaScript</li>
+      <li data-i18n="stack.html">HTML, CSS e JavaScript</li>
       <li>Firebase</li>
       <li>Firestore</li>
       <li>Three.js</li>
       <li>Canvas API</li>
       <li>PWA</li>
-      <li>Acessibilidade</li>
+      <li data-i18n="stack.a11y">Acessibilidade</li>
     </ul>
   </section>
 
@@ -87,81 +119,64 @@
   <section class="block" id="projetos" aria-labelledby="h-projetos">
     <div class="wrap">
       <div class="block-head">
-        <h2 id="h-projetos">Projetos</h2>
-        <p>Cinco projetos no ar, construídos entre 2024 e 2026.</p>
+        <h2 id="h-projetos" data-i18n="nav.projects">Projetos</h2>
+        <p data-i18n="proj.sub">Três projetos no ar, construídos entre 2024 e 2026.</p>
       </div>
+
+      <dl class="numbers">
+        <div><dt data-i18n="n1">projetos no ar</dt><dd>3</dd></div>
+        <div><dt data-i18n="n3">serviços do Firebase em uso</dt><dd>4</dd></div>
+        <div><dt data-i18n="n4">frameworks, tudo em JS puro</dt><dd>0</dd></div>
+      </dl>
 
       <ul class="cases">
 
         <li>
-          <a class="case" href="https://luksn02.github.io/F.I.C.H.A./index.html" target="_blank" rel="noopener">
+          <a class="case case--lead" data-shot="images/ficha.jpg" href="https://luksn02.github.io/F.I.C.H.A./index.html" target="_blank" rel="noopener">
             <div class="case-id">
               <span class="case-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3.5"/><circle cx="8" cy="8" r="1" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"/><circle cx="16" cy="16" r="1" fill="currentColor" stroke="none"/></svg></span>
-              <div><h3>F.I.C.H.A.</h3><span class="case-kind">Mesa virtual de RPG</span></div>
+              <div><h3>F.I.C.H.A.</h3><span class="case-kind" data-i18n="kind.vtt">Mesa virtual de RPG</span><span class="badge-main" data-i18n="badge.main">Projeto principal</span></div>
             </div>
             <div class="case-body">
-              <p>Plataforma virtual de mesa para RPG. Ficha digital completa, mapa 3D procedural com Three.js, tokens em tempo real via Firebase e painel de campanhas com Firestore.</p>
+              <p data-i18n="ficha.d">Plataforma virtual de mesa para RPG. Ficha digital completa, mapa 3D procedural com Three.js, tokens em tempo real via Firebase e painel de campanhas com Firestore.</p>
+              <p class="case-role"><span class="role-k" data-i18n="role.label">Meu papel</span> <span data-i18n="ficha.r">Desenvolvimento completo: fichas, campanhas, mesa 2D e 3D, perfis e backend em Firebase.</span></p>
               <ul class="tags"><li>Firebase</li><li>Three.js</li><li>JavaScript</li><li>Firestore</li><li>Canvas</li></ul>
             </div>
-            <span class="case-go">Ver projeto<svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg><span class="sr"> (abre em nova aba)</span></span>
+            <span class="case-go"><span data-i18n="open">Ver projeto</span><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg><span class="sr" data-i18n="newtab"> (abre em nova aba)</span></span>
           </a>
         </li>
 
         <li>
-          <a class="case" href="https://luksn02.github.io/G.K.IO/" target="_blank" rel="noopener">
+          <a class="case" data-shot="images/gkio.jpg" href="https://luksn02.github.io/G.K.IO/" target="_blank" rel="noopener">
             <div class="case-id">
               <span class="case-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5c-1.2 0-2.35-.26-3.38-.73L4 21l1.34-4.02A8.44 8.44 0 0 1 3.5 12 8.5 8.5 0 0 1 12 3.5h.5A8.5 8.5 0 0 1 21 11.5Z"/></svg></span>
-              <div><h3>G.K.IO</h3><span class="case-kind">Chat em tempo real</span></div>
+              <div><h3>G.K.IO</h3><span class="case-kind" data-i18n="gkio.kind">Chat em tempo real</span></div>
             </div>
             <div class="case-body">
-              <p>App de comunicação multiplataforma que une servidores estilo Discord com perfil e chamadas do Skype, com identidade visual própria. DMs, canais de texto e voz por categoria, chamadas de voz e vídeo e perfis públicos em tempo real.</p>
-              <ul class="tags"><li>Firebase</li><li>Cloudinary</li><li>JavaScript</li><li>Realtime</li></ul>
+              <p data-i18n="gkio.d">App de comunicação multiplataforma que une servidores estilo Discord com perfil e chamadas do Skype, com identidade visual própria. DMs, canais de texto e voz por categoria, chamadas de voz e vídeo e perfis públicos em tempo real.</p>
+              <p class="case-role"><span class="role-k" data-i18n="role.label">Meu papel</span> <span data-i18n="gkio.r">Desenvolvimento completo: chat, chamadas, permissões de servidor com regras do Firestore e versão mobile.</span></p>
+              <ul class="tags"><li>Firebase</li><li>Cloudinary</li><li>JavaScript</li><li data-i18n="tag.realtime">Tempo real</li></ul>
             </div>
-            <span class="case-go">Ver projeto<svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg><span class="sr"> (abre em nova aba)</span></span>
+            <span class="case-go"><span data-i18n="open">Ver projeto</span><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg><span class="sr" data-i18n="newtab"> (abre em nova aba)</span></span>
           </a>
         </li>
 
         <li>
-          <a class="case" href="https://luksn02.github.io/Nexus-Arena/" target="_blank" rel="noopener">
+          <a class="case" data-shot="images/nexus.jpg" href="https://luksn02.github.io/Nexus-Arena/" target="_blank" rel="noopener">
             <div class="case-id">
               <span class="case-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.5 8.5h9a4.5 4.5 0 0 1 4.44 5.24l-.55 3.3a2.4 2.4 0 0 1-4.32.98L14.5 15.5h-5l-1.57 2.52a2.4 2.4 0 0 1-4.32-.98l-.55-3.3A4.5 4.5 0 0 1 7.5 8.5Z"/><path d="M8.5 11v3M7 12.5h3"/><circle cx="16" cy="11.5" r=".9" fill="currentColor" stroke="none"/><circle cx="18" cy="13.5" r=".9" fill="currentColor" stroke="none"/></svg></span>
-              <div><h3>Nexus Arena</h3><span class="case-kind">E-sports, notícias e loja</span></div>
+              <div><h3>Nexus Arena</h3><span class="case-kind" data-i18n="nexus.kind">E-sports, notícias e loja</span></div>
             </div>
             <div class="case-body">
-              <p>Portal de notícias de e-sports com cobertura de League of Legends, CS2, Valorant e mais, integrado a uma loja de periféricos gamers com carrinho e checkout. Login e cadastro em tempo real via Firebase Auth, dados em Firestore e suporte PWA offline.</p>
-              <ul class="tags"><li>HTML/CSS/JS</li><li>Firebase</li><li>PWA</li><li>Loja virtual</li></ul>
+              <p data-i18n="nexus.d">Portal de notícias de e-sports com cobertura de League of Legends, CS2, Valorant e mais, integrado a uma loja de periféricos gamers com carrinho e checkout. Login e cadastro em tempo real via Firebase Auth, dados em Firestore e suporte PWA offline.</p>
+              <p class="case-role"><span class="role-k" data-i18n="role.label">Meu papel</span> <span data-i18n="nexus.r">Projeto escolar em grupo na E.E. Amaral Wagner. Login com Discord, loja com checkout e PWA.</span></p>
+              <ul class="tags"><li>HTML/CSS/JS</li><li>Firebase</li><li>PWA</li><li data-i18n="tag.store">Loja virtual</li></ul>
             </div>
-            <span class="case-go">Ver projeto<svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg><span class="sr"> (abre em nova aba)</span></span>
+            <span class="case-go"><span data-i18n="open">Ver projeto</span><svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg><span class="sr" data-i18n="newtab"> (abre em nova aba)</span></span>
           </a>
         </li>
 
-        <li>
-          <a class="case" href="https://luksn02.github.io/3DeT-Victory-System/" target="_blank" rel="noopener">
-            <div class="case-id">
-              <span class="case-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="14.5 17.5 3 6 3 3 6 3 17.5 14.5"/><line x1="13" y1="19" x2="19" y2="13"/><line x1="16" y1="16" x2="20" y2="20"/><line x1="19" y1="21" x2="21" y2="19"/></svg></span>
-              <div><h3>3DeT System</h3><span class="case-kind">Mesa virtual de RPG</span></div>
-            </div>
-            <div class="case-body">
-              <p>Ficha e ferramentas digitais para o sistema 3D&amp;T Victory. Mesma proposta do F.I.C.H.A.: gestão de personagem em tempo real, pensada para as mesas que rodam esse sistema.</p>
-              <ul class="tags"><li>HTML/CSS/JS</li><li>Firebase</li><li>RPG</li></ul>
-            </div>
-            <span class="case-go">Ver projeto<svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg><span class="sr"> (abre em nova aba)</span></span>
-          </a>
-        </li>
 
-        <li>
-          <a class="case" href="https://luksn02.github.io/VitaSense/" target="_blank" rel="noopener">
-            <div class="case-id">
-              <span class="case-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z"/><path d="M3.22 12H9.5l1.5-2 2 4 1.5-2h6.28"/></svg></span>
-              <div><h3>VitaSense</h3><span class="case-kind">Saúde e sensores</span></div>
-            </div>
-            <div class="case-body">
-              <p>Monitoramento de dados vitais e sensores em tempo real. Interface limpa e responsiva para visualizar e analisar sinais biométricos, com foco em UX.</p>
-              <ul class="tags"><li>HTML/CSS/JS</li><li>Sensores</li><li>Dashboard</li><li>Tempo real</li></ul>
-            </div>
-            <span class="case-go">Ver projeto<svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg><span class="sr"> (abre em nova aba)</span></span>
-          </a>
-        </li>
 
       </ul>
     </div>
@@ -172,19 +187,23 @@
     <div class="wrap about">
 
       <div class="about-text">
-        <h2 id="h-sobre">Sobre</h2>
-        <p>Sou Lucas Neves Trajano Dias, desenvolvedor iniciante em busca de espaço no mercado, com foco em front-end.</p>
-        <p>Construo projetos reais, como os que você vê aqui, para evoluir na prática: testando, errando e aprendendo no caminho.</p>
-        <p>Sou apaixonado por RPG de mesa e pela ideia de que um bom sistema merece uma plataforma à altura. Trabalho com HTML, CSS e JavaScript puro, Firebase para dados em tempo real e Three.js para 3D no navegador.</p>
+        <h2 id="h-sobre" data-i18n="nav.about">Sobre</h2>
+        <p data-i18n="about.p1">Sou Lucas Neves Trajano Dias, desenvolvedor iniciante em busca de espaço no mercado, com foco em front-end.</p>
+        <p data-i18n="about.p2">Construo projetos reais, como os que você vê aqui, para evoluir na prática: testando, errando e aprendendo no caminho.</p>
+        <p data-i18n="about.p3">Moro em São Paulo e trabalho com home office, que é a área em que pretendo atuar no futuro.</p>
+        <p data-i18n="about.p4">Sou apaixonado por RPG de mesa e pela ideia de que um bom sistema merece uma plataforma à altura. Trabalho com HTML, CSS e JavaScript puro, Firebase para dados em tempo real e Three.js para 3D no navegador.</p>
 
         <dl class="bio">
-          <div><dt>Idade</dt><dd>18 anos</dd></div>
-          <div><dt>Formação</dt><dd>Desenvolvimento de Sistemas, E.E. Amaral Wagner</dd></div>
+          <div><dt data-i18n="b.age">Idade</dt><dd data-i18n="b.age.v">18 anos</dd></div>
+          <div><dt data-i18n="b.nat">Nacionalidade</dt><dd data-i18n="b.nat.v">Brasil (PT-BR)</dd></div>
+          <div><dt data-i18n="b.city">Mora em</dt><dd data-i18n="b.city.v">São Paulo, SP</dd></div>
+          <div><dt data-i18n="b.edu">Formação</dt><dd data-i18n="b.edu.v">Desenvolvimento de Sistemas, E.E. Amaral Wagner, São Paulo</dd></div>
+          <div><dt data-i18n="f.work">Trabalho</dt><dd data-i18n="b.work.v">Home office, a área em que pretendo atuar</dd></div>
         </dl>
       </div>
 
       <div class="skills">
-        <h3>No que eu trabalho</h3>
+        <h3 data-i18n="sk.h">No que eu trabalho</h3>
         <ul>
           <li>
             <span class="sk-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2c1 3-3 4-3 8a3 3 0 0 0 6 0c1 1 1.5 2.3 1.5 3.5A5.5 5.5 0 0 1 11 19a5.5 5.5 0 0 1-4.9-8c.6 1 1.4 1.3 1.9 1-1-2.5.4-5 2-6 0 1 .5 1.7 2 3.5C12.3 8 12 5 12 2Z"/></svg></span>
@@ -192,15 +211,15 @@
           </li>
           <li>
             <span class="sk-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8v8l-9 5-9-5V8l9-5 9 5Z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg></span>
-            <div><strong>Three.js</strong><span>3D no navegador, WebGL, mapas procedurais</span></div>
+            <div><strong>Three.js</strong><span data-i18n="sk.three">3D no navegador, WebGL, mapas procedurais</span></div>
           </li>
           <li>
             <span class="sk-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21a9 9 0 1 1 0-18c4 0 8 2.5 8 6.5 0 2.2-1.8 3.5-3.5 3.5H15a1.8 1.8 0 0 0-1.3 3.1c.4.4.6.9.6 1.4 0 1.4-1.2 2.5-2.3 2.5Z"/><circle cx="7.5" cy="11" r="1" fill="currentColor" stroke="none"/><circle cx="9.5" cy="7" r="1" fill="currentColor" stroke="none"/><circle cx="14.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span>
-            <div><strong>CSS e design</strong><span>Animações, glassmorphism, temas</span></div>
+            <div><strong data-i18n="sk.css">CSS e design</strong><span data-i18n="sk.css.s">Animações, glassmorphism, temas</span></div>
           </li>
           <li>
             <span class="sk-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"/></svg></span>
-            <div><strong>Game design</strong><span>Mesas virtuais e sistemas de RPG</span></div>
+            <div><strong>Game design</strong><span data-i18n="sk.game">Mesas virtuais e sistemas de RPG</span></div>
           </li>
         </ul>
       </div>
@@ -212,19 +231,19 @@
   <section class="block" id="contato" aria-labelledby="h-contato">
     <div class="wrap">
       <div class="block-head">
-        <h2 id="h-contato">Vamos conversar?</h2>
-        <p>Aberto a colaborações, freelas e boas ideias.</p>
+        <h2 id="h-contato" data-i18n="c.h">Vamos conversar?</h2>
+        <p data-i18n="c.sub">Aberto a colaborações, freelas e boas ideias.</p>
       </div>
 
       <ul class="reach">
-        <li>
+        <li class="has-copy">
           <a href="mailto:trajano.neves01@gmail.com"><span class="reach-k">Email</span><span class="reach-v">trajano.neves01@gmail.com</span></a>
-          <button class="copy" type="button" data-copy="trajano.neves01@gmail.com">Copiar email</button>
+          <button class="copy" type="button" data-copy="trajano.neves01@gmail.com" data-i18n="copy">Copiar email</button>
         </li>
         <li><a href="https://github.com/luksn02" target="_blank" rel="noopener"><span class="reach-k">GitHub</span><span class="reach-v">github.com/luksn02</span></a></li>
         <li><a href="https://discord.com/users/luka_00000" target="_blank" rel="noopener"><span class="reach-k">Discord</span><span class="reach-v">luka_00000</span></a></li>
         <li class="soon">
-          <div class="soon-row"><span class="reach-k">Instagram</span><span class="badge">Em breve</span></div>
+          <div class="soon-row"><span class="reach-k">Instagram</span><span class="badge" data-i18n="soon">Em breve</span></div>
         </li>
       </ul>
       <p class="sr" id="copy-live" role="status" aria-live="polite"></p>
@@ -237,18 +256,27 @@
   <div class="wrap foot-grid">
     <div class="foot-brand">
       <p class="foot-logo">lucas<b>.</b>dev</p>
-      <p>Desenvolvedor web em São Paulo, BR. Interfaces em tempo real, 3D no navegador e ferramentas para RPG de mesa.</p>
+      <p data-i18n="foot.d">Desenvolvedor web em São Paulo, BR. Interfaces em tempo real, 3D no navegador e ferramentas para RPG de mesa.</p>
     </div>
-    <nav class="foot-nav" aria-label="Rodapé">
-      <a href="#projetos">Projetos</a>
-      <a href="#sobre">Sobre</a>
-      <a href="#contato">Contato</a>
+    <nav class="foot-nav" aria-label="Rodapé" data-i18n-attr="aria-label:aria.foot">
+      <a href="#projetos" data-i18n="nav.projects">Projetos</a>
+      <a href="#sobre" data-i18n="nav.about">Sobre</a>
+      <a href="#contato" data-i18n="nav.contact">Contato</a>
       <a href="https://github.com/luksn02" target="_blank" rel="noopener">GitHub</a>
     </nav>
-    <a class="totop" href="#topo">Voltar ao topo</a>
+    <a class="totop" href="#topo" data-i18n="foot.top">Voltar ao topo</a>
   </div>
-  <div class="wrap foot-base"><p>© 2026 Lucas Neves</p><p>Feito à mão, sem framework</p></div>
+  <div class="wrap foot-base"><p>© 2026 Lucas Neves</p><p data-i18n="foot.made">Feito à mão, sem framework</p></div>
 </footer>
+
+<!-- prévia dos projetos (segue o mouse no desktop) -->
+<div class="peek" id="peek" aria-hidden="true">
+  <div class="peek-bar"><i></i><i></i><i></i><span class="peek-url"></span></div>
+  <div class="peek-body">
+    <img alt="" decoding="async">
+    <div class="peek-ph"><span class="peek-icon"></span><strong></strong></div>
+  </div>
+</div>
 
 <script src="script.js"></script>
 </body>

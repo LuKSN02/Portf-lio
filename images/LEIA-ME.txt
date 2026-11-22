@@ -1,0 +1,8 @@
+Prints usados nas prévias dos projetos (proporção 2:1, JPG):
+
+  ficha.jpg   F.I.C.H.A.
+  gkio.jpg    G.K.IO
+  nexus.jpg   Nexus Arena
+
+Para trocar um print, substitua o arquivo mantendo o mesmo nome.
+Para refazer todos de uma vez no seu computador: node tools/capture-prints.js (instruções no topo do arquivo).
