@@ -250,6 +250,15 @@ b{font-weight:inherit}
 }
 .reach a:hover,.reach a:focus-visible{background:var(--wash);padding-left:1.25rem;padding-right:1rem}
 .reach a:focus-visible{outline-offset:-2px}
+.soon-row{
+  flex:1;min-width:0;display:flex;align-items:center;justify-content:space-between;gap:.5rem 2rem;flex-wrap:wrap;
+  padding:1.4rem clamp(0rem,1vw,.5rem);
+}
+.soon .reach-k{color:var(--muted)}
+.badge{
+  font-family:var(--mono);font-size:.75rem;color:var(--accent-text);
+  border:1px dashed rgba(123,79,255,.5);border-radius:100px;padding:.35rem .9rem;
+}
 .reach-k{font-family:var(--display);font-weight:700;font-size:clamp(1.4rem,3vw,2rem);letter-spacing:-.03em;transition:color .2s}
 .reach a:hover .reach-k,.reach a:focus-visible .reach-k{color:var(--accent-text)}
 .reach-v{font-family:var(--mono);font-size:clamp(.82rem,1.8vw,1rem);color:var(--muted);overflow-wrap:anywhere}
