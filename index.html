@@ -3,457 +3,250 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lucas Neves — Dev</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<title>Lucas Neves — Desenvolvedor Web</title>
+<meta name="description" content="Portfólio de Lucas Neves, desenvolvedor front-end em São Paulo. Apps em tempo real, plataformas de RPG de mesa e interfaces com Firebase e Three.js.">
+<meta name="theme-color" content="#07070d">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2307070d'/%3E%3Ccircle cx='16' cy='16' r='5' fill='%237b4fff'/%3E%3C/svg%3E">
+<link rel="preload" href="fonts/syne-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="style.css">
+<script>
+  /* liga a abertura antes da primeira pintura; com "reduzir movimento" ou sem JS ela não aparece */
+  try{if(!matchMedia('(prefers-reduced-motion:reduce)').matches)document.documentElement.classList.add('intro-on')}catch(e){}
+</script>
 </head>
 <body>
 
-<div id="curtain"></div>
-<div id="cursor"></div>
-<div id="cursor-ring"></div>
-<canvas id="canvas-bg"></canvas>
-
-<!-- NAV -->
-<nav>
-  <span class="nav-logo">lucas<b>.</b>dev</span>
-  <ul class="nav-links">
-    <li><a href="#sobre-mim">Sobre mim</a></li>
-    <li><a href="#projetos">Projetos</a></li>
-    <li><a href="#sobre">Sobre</a></li>
-    <li><a href="#contato">Contato</a></li>
-  </ul>
-  <div class="nav-pill">
-    <div class="nav-pill-dot"></div>
-    <span class="nav-pill-text">Disponível</span>
-  </div>
-  <button class="nav-burger" id="navBurger" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobileMenu">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
-
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#sobre-mim">Sobre mim</a>
-  <a href="#projetos">Projetos</a>
-  <a href="#sobre">Sobre</a>
-  <a href="#contato">Contato</a>
+<div class="intro" id="intro" aria-hidden="true">
+  <span class="intro-mark">lucas<b>.</b>dev</span>
+  <i class="intro-line"></i>
 </div>
 
-<div class="wrapper">
+<a class="skip" href="#projetos">Ir para os projetos</a>
+
+<header class="top">
+  <div class="top-in">
+    <a class="logo" href="#topo" aria-label="Lucas Neves, início">lucas<b>.</b>dev</a>
+    <nav aria-label="Principal">
+      <a href="#projetos">Projetos</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <p class="status"><i></i>Disponível</p>
+  </div>
+  <div class="progress" aria-hidden="true"><i id="progress"></i></div>
+</header>
+
+<main id="topo">
 
   <!-- ── HERO ── -->
-  <section class="hero">
-    <p class="hero-tag">Desenvolvedor Web · São Paulo, BR</p>
+  <section class="hero" aria-labelledby="nome">
+    <div class="wrap hero-wrap">
 
-    <h1 class="hero-title">
-      <span class="solid" id="ht1">Lucas</span>
-      <span class="strk" id="ht2">Neves</span>
-      <span class="strk-c" id="ht3">Developer</span>
-    </h1>
+      <div class="hero-stage">
+        <canvas class="orb" id="orb" aria-hidden="true"></canvas>
 
-    <div class="hero-bottom">
-      <p class="hero-desc">
-        Interfaces que vivem na interseção entre tecnologia, roleplay e dados.
-        Construindo experiências com Firebase, Three.js e muito código artesanal
-        — do dungeon ao dashboard.
-      </p>
-      <div class="hero-counters">
-        <div class="counter-item">
-          <div class="counter-num" data-target="5"><span>0</span></div>
-          <div class="counter-label">Projetos<br>online</div>
-        </div>
-        <div class="counter-item">
-          <div class="counter-num">∞<span style="color:var(--purple);display:inline-flex;vertical-align:middle;margin-left:0.3rem">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M4 8h13a3 3 0 0 1 0 6h-1"/>
-              <path d="M4 8v7a4 4 0 0 0 4 4h5a4 4 0 0 0 4-4V8"/>
-              <path d="M8 2c0 .8-.5 1-.5 2S8 5.2 8 6M12 2c0 .8-.5 1-.5 2s.5 1.2.5 2"/>
-            </svg>
-          </span></div>
-          <div class="counter-label">Café<br>consumido</div>
-        </div>
+        <p class="hero-role rise" style="--d:0s">Desenvolvedor web · São Paulo, BR</p>
+        <h1 id="nome" class="hero-name">
+          <span class="rise" style="--d:.1s">Lucas</span>
+          <span class="rise out" style="--d:.2s">Neves</span>
+        </h1>
+        <p class="hero-lead rise" style="--d:.35s">
+          Interfaces que vivem na interseção entre tecnologia, roleplay e dados.
+          Construo com Firebase, Three.js e muito código artesanal, do dungeon ao dashboard.
+        </p>
+        <p class="hero-actions rise" style="--d:.45s">
+          <a class="btn btn-solid" href="#projetos">Ver projetos</a>
+          <a class="btn" href="#contato">Falar comigo</a>
+        </p>
       </div>
-    </div>
 
-    <div class="hero-scroll-ind">
-      <div class="scroll-track"></div>
-      Scroll para explorar
+      <dl class="facts rise" style="--d:.6s">
+        <div><dt>Base</dt><dd>São Paulo, BR</dd></div>
+        <div><dt>Foco</dt><dd>Front-end</dd></div>
+        <div><dt>Stack</dt><dd>Firebase, Three.js, JS puro</dd></div>
+        <div><dt>Agenda</dt><dd>Aberto a freelas</dd></div>
+      </dl>
+
     </div>
   </section>
 
-  <!-- MARQUEE -->
-  <div class="marquee-wrap reveal">
-    <div class="marquee-inner">
-      <div class="marquee-track" aria-hidden="true">
-        <span class="m-item"><span class="m-dot"></span>HTML · CSS · JS</span>
-        <span class="m-item"><span class="m-dot"></span>Firebase</span>
-        <span class="m-item"><span class="m-dot"></span>Firestore</span>
-        <span class="m-item"><span class="m-dot"></span>Three.js</span>
-        <span class="m-item"><span class="m-dot"></span>GitHub Pages</span>
-        <span class="m-item"><span class="m-dot"></span>Ordem Paranormal</span>
-        <span class="m-item"><span class="m-dot"></span>Realtime Database</span>
-        <span class="m-item"><span class="m-dot"></span>Canvas API</span>
-        <span class="m-item"><span class="m-dot"></span>CSS Animations</span>
-        <span class="m-item"><span class="m-dot"></span>Responsive Design</span>
-        <span class="m-item"><span class="m-dot"></span>WebGL</span>
-        <span class="m-item"><span class="m-dot"></span>Acessibilidade</span>
+  <!-- ── STACK ── -->
+  <section class="stack" aria-label="Tecnologias">
+    <ul class="wrap">
+      <li>HTML, CSS e JavaScript</li>
+      <li>Firebase</li>
+      <li>Firestore</li>
+      <li>Three.js</li>
+      <li>Canvas API</li>
+      <li>PWA</li>
+      <li>Acessibilidade</li>
+    </ul>
+  </section>
+
+  <!-- ── PROJETOS ── -->
+  <section class="block" id="projetos" aria-labelledby="h-projetos">
+    <div class="wrap">
+      <div class="block-head">
+        <h2 id="h-projetos">Projetos</h2>
+        <p>Cinco projetos no ar, construídos entre 2024 e 2026.</p>
       </div>
-      <div class="marquee-track" aria-hidden="true">
-        <span class="m-item"><span class="m-dot"></span>HTML · CSS · JS</span>
-        <span class="m-item"><span class="m-dot"></span>Firebase</span>
-        <span class="m-item"><span class="m-dot"></span>Firestore</span>
-        <span class="m-item"><span class="m-dot"></span>Three.js</span>
-        <span class="m-item"><span class="m-dot"></span>GitHub Pages</span>
-        <span class="m-item"><span class="m-dot"></span>Ordem Paranormal</span>
-        <span class="m-item"><span class="m-dot"></span>Realtime Database</span>
-        <span class="m-item"><span class="m-dot"></span>Canvas API</span>
-        <span class="m-item"><span class="m-dot"></span>CSS Animations</span>
-        <span class="m-item"><span class="m-dot"></span>Responsive Design</span>
-        <span class="m-item"><span class="m-dot"></span>WebGL</span>
-        <span class="m-item"><span class="m-dot"></span>Acessibilidade</span>
-      </div>
+
+      <ul class="cases">
+
+        <li>
+          <a class="case" href="https://luksn02.github.io/F.I.C.H.A./index.html" target="_blank" rel="noopener">
+            <div class="case-id">
+              <span class="case-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3.5"/><circle cx="8" cy="8" r="1" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"/><circle cx="16" cy="16" r="1" fill="currentColor" stroke="none"/></svg></span>
+              <div><h3>F.I.C.H.A.</h3><span class="case-kind">Mesa virtual de RPG</span></div>
+            </div>
+            <div class="case-body">
+              <p>Plataforma virtual de mesa para RPG. Ficha digital completa, mapa 3D procedural com Three.js, tokens em tempo real via Firebase e painel de campanhas com Firestore.</p>
+              <ul class="tags"><li>Firebase</li><li>Three.js</li><li>JavaScript</li><li>Firestore</li><li>Canvas</li></ul>
+            </div>
+            <span class="case-go">Ver projeto<svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg><span class="sr"> (abre em nova aba)</span></span>
+          </a>
+        </li>
+
+        <li>
+          <a class="case" href="https://luksn02.github.io/G.K.IO/" target="_blank" rel="noopener">
+            <div class="case-id">
+              <span class="case-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5c-1.2 0-2.35-.26-3.38-.73L4 21l1.34-4.02A8.44 8.44 0 0 1 3.5 12 8.5 8.5 0 0 1 12 3.5h.5A8.5 8.5 0 0 1 21 11.5Z"/></svg></span>
+              <div><h3>G.K.IO</h3><span class="case-kind">Chat em tempo real</span></div>
+            </div>
+            <div class="case-body">
+              <p>App de comunicação multiplataforma que une servidores estilo Discord com perfil e chamadas do Skype, com identidade visual própria. DMs, canais de texto e voz por categoria, chamadas de voz e vídeo e perfis públicos em tempo real.</p>
+              <ul class="tags"><li>Firebase</li><li>Cloudinary</li><li>JavaScript</li><li>Realtime</li></ul>
+            </div>
+            <span class="case-go">Ver projeto<svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg><span class="sr"> (abre em nova aba)</span></span>
+          </a>
+        </li>
+
+        <li>
+          <a class="case" href="https://luksn02.github.io/Nexus-Arena/" target="_blank" rel="noopener">
+            <div class="case-id">
+              <span class="case-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.5 8.5h9a4.5 4.5 0 0 1 4.44 5.24l-.55 3.3a2.4 2.4 0 0 1-4.32.98L14.5 15.5h-5l-1.57 2.52a2.4 2.4 0 0 1-4.32-.98l-.55-3.3A4.5 4.5 0 0 1 7.5 8.5Z"/><path d="M8.5 11v3M7 12.5h3"/><circle cx="16" cy="11.5" r=".9" fill="currentColor" stroke="none"/><circle cx="18" cy="13.5" r=".9" fill="currentColor" stroke="none"/></svg></span>
+              <div><h3>Nexus Arena</h3><span class="case-kind">E-sports, notícias e loja</span></div>
+            </div>
+            <div class="case-body">
+              <p>Portal de notícias de e-sports com cobertura de League of Legends, CS2, Valorant e mais, integrado a uma loja de periféricos gamers com carrinho e checkout. Login e cadastro em tempo real via Firebase Auth, dados em Firestore e suporte PWA offline.</p>
+              <ul class="tags"><li>HTML/CSS/JS</li><li>Firebase</li><li>PWA</li><li>Loja virtual</li></ul>
+            </div>
+            <span class="case-go">Ver projeto<svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg><span class="sr"> (abre em nova aba)</span></span>
+          </a>
+        </li>
+
+        <li>
+          <a class="case" href="https://luksn02.github.io/3DeT-Victory-System/" target="_blank" rel="noopener">
+            <div class="case-id">
+              <span class="case-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="14.5 17.5 3 6 3 3 6 3 17.5 14.5"/><line x1="13" y1="19" x2="19" y2="13"/><line x1="16" y1="16" x2="20" y2="20"/><line x1="19" y1="21" x2="21" y2="19"/></svg></span>
+              <div><h3>3DeT System</h3><span class="case-kind">Mesa virtual de RPG</span></div>
+            </div>
+            <div class="case-body">
+              <p>Ficha e ferramentas digitais para o sistema 3D&amp;T Victory. Mesma proposta do F.I.C.H.A.: gestão de personagem em tempo real, pensada para as mesas que rodam esse sistema.</p>
+              <ul class="tags"><li>HTML/CSS/JS</li><li>Firebase</li><li>RPG</li></ul>
+            </div>
+            <span class="case-go">Ver projeto<svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg><span class="sr"> (abre em nova aba)</span></span>
+          </a>
+        </li>
+
+        <li>
+          <a class="case" href="https://luksn02.github.io/VitaSense/" target="_blank" rel="noopener">
+            <div class="case-id">
+              <span class="case-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z"/><path d="M3.22 12H9.5l1.5-2 2 4 1.5-2h6.28"/></svg></span>
+              <div><h3>VitaSense</h3><span class="case-kind">Saúde e sensores</span></div>
+            </div>
+            <div class="case-body">
+              <p>Monitoramento de dados vitais e sensores em tempo real. Interface limpa e responsiva para visualizar e analisar sinais biométricos, com foco em UX.</p>
+              <ul class="tags"><li>HTML/CSS/JS</li><li>Sensores</li><li>Dashboard</li><li>Tempo real</li></ul>
+            </div>
+            <span class="case-go">Ver projeto<svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg><span class="sr"> (abre em nova aba)</span></span>
+          </a>
+        </li>
+
+      </ul>
     </div>
+  </section>
+
+  <!-- ── SOBRE ── -->
+  <section class="block" id="sobre" aria-labelledby="h-sobre">
+    <div class="wrap about">
+
+      <div class="about-text">
+        <h2 id="h-sobre">Sobre</h2>
+        <p>Sou Lucas Neves Trajano Dias, desenvolvedor iniciante em busca de espaço no mercado, com foco em front-end.</p>
+        <p>Construo projetos reais, como os que você vê aqui, para evoluir na prática: testando, errando e aprendendo no caminho.</p>
+        <p>Sou apaixonado por RPG de mesa e pela ideia de que um bom sistema merece uma plataforma à altura. Trabalho com HTML, CSS e JavaScript puro, Firebase para dados em tempo real e Three.js para 3D no navegador.</p>
+
+        <dl class="bio">
+          <div><dt>Idade</dt><dd>18 anos</dd></div>
+          <div><dt>Formação</dt><dd>Desenvolvimento de Sistemas, E.E. Amaral Wagner</dd></div>
+        </dl>
+      </div>
+
+      <div class="skills">
+        <h3>No que eu trabalho</h3>
+        <ul>
+          <li>
+            <span class="sk-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2c1 3-3 4-3 8a3 3 0 0 0 6 0c1 1 1.5 2.3 1.5 3.5A5.5 5.5 0 0 1 11 19a5.5 5.5 0 0 1-4.9-8c.6 1 1.4 1.3 1.9 1-1-2.5.4-5 2-6 0 1 .5 1.7 2 3.5C12.3 8 12 5 12 2Z"/></svg></span>
+            <div><strong>Firebase</strong><span>Realtime Database, Auth, Firestore, Hosting</span></div>
+          </li>
+          <li>
+            <span class="sk-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8v8l-9 5-9-5V8l9-5 9 5Z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg></span>
+            <div><strong>Three.js</strong><span>3D no navegador, WebGL, mapas procedurais</span></div>
+          </li>
+          <li>
+            <span class="sk-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21a9 9 0 1 1 0-18c4 0 8 2.5 8 6.5 0 2.2-1.8 3.5-3.5 3.5H15a1.8 1.8 0 0 0-1.3 3.1c.4.4.6.9.6 1.4 0 1.4-1.2 2.5-2.3 2.5Z"/><circle cx="7.5" cy="11" r="1" fill="currentColor" stroke="none"/><circle cx="9.5" cy="7" r="1" fill="currentColor" stroke="none"/><circle cx="14.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span>
+            <div><strong>CSS e design</strong><span>Animações, glassmorphism, temas</span></div>
+          </li>
+          <li>
+            <span class="sk-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"/></svg></span>
+            <div><strong>Game design</strong><span>Mesas virtuais e sistemas de RPG</span></div>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── CONTATO ── -->
+  <section class="block" id="contato" aria-labelledby="h-contato">
+    <div class="wrap">
+      <div class="block-head">
+        <h2 id="h-contato">Vamos conversar?</h2>
+        <p>Aberto a colaborações, freelas e boas ideias.</p>
+      </div>
+
+      <ul class="reach">
+        <li>
+          <a href="mailto:trajano.neves01@gmail.com"><span class="reach-k">Email</span><span class="reach-v">trajano.neves01@gmail.com</span></a>
+          <button class="copy" type="button" data-copy="trajano.neves01@gmail.com">Copiar email</button>
+        </li>
+        <li><a href="https://github.com/luksn02" target="_blank" rel="noopener"><span class="reach-k">GitHub</span><span class="reach-v">github.com/luksn02</span></a></li>
+        <li><a href="https://discord.com/users/luka_00000" target="_blank" rel="noopener"><span class="reach-k">Discord</span><span class="reach-v">luka_00000</span></a></li>
+      </ul>
+      <p class="sr" id="copy-live" role="status" aria-live="polite"></p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-grid">
+    <div class="foot-brand">
+      <p class="foot-logo">lucas<b>.</b>dev</p>
+      <p>Desenvolvedor web em São Paulo, BR. Interfaces em tempo real, 3D no navegador e ferramentas para RPG de mesa.</p>
+    </div>
+    <nav class="foot-nav" aria-label="Rodapé">
+      <a href="#projetos">Projetos</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#contato">Contato</a>
+      <a href="https://github.com/luksn02" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+    <a class="totop" href="#topo">Voltar ao topo</a>
   </div>
+  <div class="wrap foot-base"><p>© 2026 Lucas Neves</p><p>Feito à mão, sem framework</p></div>
+</footer>
 
-  <!-- ── SOBRE MIM ── -->
-  <section id="sobre-mim">
-    <div class="sec-sep reveal">
-      <span class="sec-num">01</span>
-      <div class="sec-line"></div>
-      <span class="sec-label">Sobre mim</span>
-    </div>
-
-    <div class="me-grid">
-      <div class="reveal">
-        <h2 class="about-title">Prazer, eu sou<br><em>Lucas</em></h2>
-        <div class="about-text">
-          <p>Meu nome é Lucas Neves Trajano Dias, tenho 18 anos e sou um desenvolvedor iniciante em busca de espaço no mercado de trabalho atual, com foco em front-end.</p>
-          <p>Atualmente curso Desenvolvimento de Sistemas na E.E. Amaral Wagner, e construo projetos reais — como os que você vê aqui — pra evoluir na prática, testando, errando e aprendendo no caminho.</p>
-        </div>
-      </div>
-      <div class="me-cards reveal" style="transition-delay:0.1s">
-        <div class="me-card">
-          <span class="me-icon" style="color:var(--purple)">
-            <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <rect x="2" y="4" width="20" height="14" rx="2"/>
-              <path d="m8 10 2 2-2 2M13 14h3"/>
-            </svg>
-          </span>
-          <span class="me-label">Nome completo</span>
-          <span class="me-value">Lucas Neves Trajano Dias</span>
-        </div>
-        <div class="me-card">
-          <span class="me-icon" style="color:var(--pink)">
-            <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M12 8v3M9 5.5a1.5 1.5 0 1 1 3 0c0 .9-1.5 2-1.5 2s-1.5-1.1-1.5-2ZM12 5.5a1.5 1.5 0 1 1 3 0c0 .9-1.5 2-1.5 2"/>
-              <rect x="4" y="11" width="16" height="9" rx="2"/>
-              <path d="M4 15h16"/>
-            </svg>
-          </span>
-          <span class="me-label">Idade</span>
-          <span class="me-value">18 anos</span>
-        </div>
-        <div class="me-card">
-          <span class="me-icon" style="color:var(--cyan)">
-            <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="m2 9 10-5 10 5-10 5-10-5Z"/>
-              <path d="M6 11.5V16c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5v-4.5M22 9v6"/>
-            </svg>
-          </span>
-          <span class="me-label">Formação</span>
-          <span class="me-value">Des. de Sistemas — E.E. Amaral Wagner</span>
-        </div>
-        <div class="me-card">
-          <span class="me-icon" style="color:var(--green)">
-            <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <circle cx="12" cy="12" r="9"/>
-              <circle cx="12" cy="12" r="5"/>
-              <circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"/>
-            </svg>
-          </span>
-          <span class="me-label">Foco</span>
-          <span class="me-value">Front-end · Web Development</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── PROJECTS ── -->
-  <section id="projetos">
-    <div class="sec-sep reveal">
-      <span class="sec-num">02</span>
-      <div class="sec-line"></div>
-      <span class="sec-label">Projetos</span>
-    </div>
-
-    <div class="proj-header reveal">
-      <h2 class="proj-heading">O que eu <em>construí</em></h2>
-      <span class="proj-count">5 projetos · 2024–2026</span>
-    </div>
-
-    <div class="cards-grid">
-
-      <div class="reveal c-wrap" style="transition-delay:0.05s">
-        <div class="c-border">
-          <a class="card" href="https://luksn02.github.io/F.I.C.H.A./index.html" target="_blank" rel="noopener">
-            <div class="c-glow"></div>
-            <div class="c-top">
-              <div class="c-icon" style="color:var(--purple)">
-                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <rect x="3" y="3" width="18" height="18" rx="3.5"/>
-                  <circle cx="8" cy="8" r="1" fill="currentColor" stroke="none"/>
-                  <circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"/>
-                  <circle cx="16" cy="16" r="1" fill="currentColor" stroke="none"/>
-                </svg>
-              </div>
-              <span class="c-badge bp">VTT · RPG</span>
-            </div>
-            <h2 class="c-title">F.I.C.H.A.</h2>
-            <p class="c-desc">
-              Plataforma virtual de mesa para Ordem Paranormal. Ficha digital completa, mapa 3D procedural com Three.js, tokens em tempo real via Firebase e painel de campanhas com Firestore.
-            </p>
-            <div class="c-tags">
-              <span>Firebase</span><span>Three.js</span><span>JS</span><span>Firestore</span><span>Canvas</span>
-            </div>
-            <div class="c-foot">
-              <span class="c-url">luksn02.github.io/F.I.C.H.A.</span>
-              <div class="c-btn">Ver projeto <div class="c-btn-arrow">↗</div></div>
-            </div>
-          </a>
-        </div>
-      </div>
-
-      <div class="reveal c-wrap" style="transition-delay:0.12s">
-        <div class="c-border">
-          <a class="card" href="https://luksn02.github.io/G.K.IO/" target="_blank" rel="noopener">
-            <div class="c-glow"></div>
-            <div class="c-top">
-              <div class="c-icon" style="color:var(--cyan)">
-                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5c-1.2 0-2.35-.26-3.38-.73L4 21l1.34-4.02A8.44 8.44 0 0 1 3.5 12 8.5 8.5 0 0 1 12 3.5h.5A8.5 8.5 0 0 1 21 11.5Z"/>
-                </svg>
-              </div>
-              <span class="c-badge bc">Chat · Realtime</span>
-            </div>
-            <h2 class="c-title">G.K.IO</h2>
-            <p class="c-desc">
-              App de comunicação multiplataforma, unindo servidores estilo Discord com a robustez de perfil e chamadas do Skype — identidade visual própria. DMs, canais de texto/voz por categoria, chamadas de voz/vídeo e perfis públicos em tempo real.
-            </p>
-            <div class="c-tags">
-              <span>Firebase</span><span>Cloudinary</span><span>JS</span><span>Realtime</span>
-            </div>
-            <div class="c-foot">
-              <span class="c-url">luksn02.github.io/G.K.IO</span>
-              <div class="c-btn">Ver projeto <div class="c-btn-arrow">↗</div></div>
-            </div>
-          </a>
-        </div>
-      </div>
-
-      <div class="reveal c-wrap" style="transition-delay:0.19s">
-        <div class="c-border">
-          <a class="card" href="https://luksn02.github.io/Nexus-Arena/" target="_blank" rel="noopener">
-            <div class="c-glow"></div>
-            <div class="c-top">
-              <div class="c-icon" style="color:var(--pink)">
-                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M7.5 8.5h9a4.5 4.5 0 0 1 4.44 5.24l-.55 3.3a2.4 2.4 0 0 1-4.32.98L14.5 15.5h-5l-1.57 2.52a2.4 2.4 0 0 1-4.32-.98l-.55-3.3A4.5 4.5 0 0 1 7.5 8.5Z"/>
-                  <path d="M8.5 11v3M7 12.5h3"/>
-                  <circle cx="16" cy="11.5" r="0.9" fill="currentColor" stroke="none"/>
-                  <circle cx="18" cy="13.5" r="0.9" fill="currentColor" stroke="none"/>
-                </svg>
-              </div>
-              <span class="c-badge bpk">E-sports · Notícias & Loja</span>
-            </div>
-            <h2 class="c-title">Nexus Arena</h2>
-            <p class="c-desc">
-              Portal de notícias de e-sports com cobertura de League of Legends, CS2, Valorant e mais, integrado a uma loja de periféricos gamers com carrinho e checkout. Login/cadastro em tempo real via Firebase Auth, dados em Firestore e suporte PWA offline — zero emojis, só SVG.
-            </p>
-            <div class="c-tags">
-              <span>HTML/CSS/JS</span><span>Firebase</span><span>PWA</span><span>Loja Virtual</span>
-            </div>
-            <div class="c-foot">
-              <span class="c-url">luksn02.github.io/Nexus-Arena</span>
-              <div class="c-btn">Ver projeto <div class="c-btn-arrow">↗</div></div>
-            </div>
-          </a>
-        </div>
-      </div>
-
-      <div class="reveal c-wrap" style="transition-delay:0.26s">
-        <div class="c-border">
-          <a class="card" href="https://luksn02.github.io/3DeT-Victory-System/" target="_blank" rel="noopener">
-            <div class="c-glow"></div>
-            <div class="c-top">
-              <div class="c-icon" style="color:var(--purple)">
-                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <polyline points="14.5 17.5 3 6 3 3 6 3 17.5 14.5"/>
-                  <line x1="13" y1="19" x2="19" y2="13"/>
-                  <line x1="16" y1="16" x2="20" y2="20"/>
-                  <line x1="19" y1="21" x2="21" y2="19"/>
-                </svg>
-              </div>
-              <span class="c-badge bp">VTT · RPG</span>
-            </div>
-            <h2 class="c-title">3DeT System</h2>
-            <p class="c-desc">
-              Ficha e ferramentas digitais para o sistema 3D&T Victory. Mesma proposta do F.I.C.H.A. — gestão de personagem em tempo real, pensada pra mesas que rodam esse sistema.
-            </p>
-            <div class="c-tags">
-              <span>HTML/CSS/JS</span><span>Firebase</span><span>RPG</span>
-            </div>
-            <div class="c-foot">
-              <span class="c-url">luksn02.github.io/3DeT-Victory-System</span>
-              <div class="c-btn">Ver projeto <div class="c-btn-arrow">↗</div></div>
-            </div>
-          </a>
-        </div>
-      </div>
-
-      <div class="reveal c-wrap" style="transition-delay:0.33s">
-        <div class="c-border">
-          <a class="card" href="https://luksn02.github.io/VitaSense/" target="_blank" rel="noopener">
-            <div class="c-glow"></div>
-            <div class="c-top">
-              <div class="c-icon" style="color:var(--green)">
-                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z"/>
-                  <path d="M3.22 12H9.5l1.5-2 2 4 1.5-2h6.28"/>
-                </svg>
-              </div>
-              <span class="c-badge bg">Saúde · Sensores</span>
-            </div>
-            <h2 class="c-title">VitaSense</h2>
-            <p class="c-desc">
-              Monitoramento de dados vitais e sensores em tempo real. Interface limpa e responsiva para visualização e análise de sinais biométricos com foco em UX.
-            </p>
-            <div class="c-tags">
-              <span>HTML/CSS/JS</span><span>Sensores</span><span>Dashboard</span><span>Tempo real</span>
-            </div>
-            <div class="c-foot">
-              <span class="c-url">luksn02.github.io/VitaSense</span>
-              <div class="c-btn">Ver projeto <div class="c-btn-arrow">↗</div></div>
-            </div>
-          </a>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ── ABOUT ── -->
-  <section id="sobre">
-    <div class="sec-sep reveal">
-      <span class="sec-num">03</span>
-      <div class="sec-line"></div>
-      <span class="sec-label">Sobre</span>
-    </div>
-
-    <div class="about-grid">
-      <div class="reveal">
-        <h2 class="about-title">Dev que cria<br>mundos <em>digitais</em></h2>
-        <div class="about-text">
-          <p>Apaixonado por RPG de mesa e pela ideia de que um bom sistema merece uma plataforma à altura. Desenvolvo projetos que unem narrativa, tecnologia e design.</p>
-          <p>Trabalho com HTML, CSS e JavaScript puro, integrando Firebase para dados em tempo real e Three.js para experiências 3D no browser — do dungeon ao dashboard.</p>
-        </div>
-      </div>
-      <div class="skills-grid reveal" style="transition-delay:0.1s">
-        <div class="sk-card">
-          <div class="sk-emoji" style="color:var(--purple)">
-            <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M12 2c1 3-3 4-3 8a3 3 0 0 0 6 0c1 1 1.5 2.3 1.5 3.5A5.5 5.5 0 0 1 11 19a5.5 5.5 0 0 1-4.9-8c.6 1 1.4 1.3 1.9 1-1-2.5.4-5 2-6 0 1 .5 1.7 2 3.5C12.3 8 12 5 12 2Z"/>
-            </svg>
-          </div>
-          <div class="sk-name">Firebase</div>
-          <div class="sk-sub">Realtime DB · Auth<br>Firestore · Hosting</div>
-          <div class="sk-bar"><div class="sk-bar-fill p" data-w="90"></div></div>
-        </div>
-        <div class="sk-card">
-          <div class="sk-emoji" style="color:var(--cyan)">
-            <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M21 8v8l-9 5-9-5V8l9-5 9 5Z"/>
-              <path d="M3 8l9 5 9-5M12 13v8"/>
-            </svg>
-          </div>
-          <div class="sk-name">Three.js</div>
-          <div class="sk-sub">3D no browser<br>WebGL · Procedural</div>
-          <div class="sk-bar"><div class="sk-bar-fill c" data-w="78"></div></div>
-        </div>
-        <div class="sk-card">
-          <div class="sk-emoji" style="color:var(--purple)">
-            <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M12 21a9 9 0 1 1 0-18c4 0 8 2.5 8 6.5 0 2.2-1.8 3.5-3.5 3.5H15a1.8 1.8 0 0 0-1.3 3.1c.4.4.6.9.6 1.4 0 1.4-1.2 2.5-2.3 2.5Z"/>
-              <circle cx="7.5" cy="11" r="1" fill="currentColor" stroke="none"/>
-              <circle cx="9.5" cy="7" r="1" fill="currentColor" stroke="none"/>
-              <circle cx="14.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
-            </svg>
-          </div>
-          <div class="sk-name">CSS / Design</div>
-          <div class="sk-sub">Animações<br>Glassmorphism · Themes</div>
-          <div class="sk-bar"><div class="sk-bar-fill p" data-w="88"></div></div>
-        </div>
-        <div class="sk-card">
-          <div class="sk-emoji" style="color:var(--cyan)">
-            <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <rect x="3" y="3" width="18" height="18" rx="3.5"/>
-              <circle cx="8" cy="8" r="1" fill="currentColor" stroke="none"/>
-              <circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"/>
-              <circle cx="16" cy="16" r="1" fill="currentColor" stroke="none"/>
-            </svg>
-          </div>
-          <div class="sk-name">Game Design</div>
-          <div class="sk-sub">VTT · RPG systems<br>Ordem Paranormal</div>
-          <div class="sk-bar"><div class="sk-bar-fill c" data-w="95"></div></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── CONTACT ── -->
-  <section id="contato">
-    <div class="sec-sep reveal">
-      <span class="sec-num">04</span>
-      <div class="sec-line"></div>
-      <span class="sec-label">Contato</span>
-    </div>
-
-    <div class="contact-wrap reveal">
-      <h2>
-        <span class="cv">Vamos</span><br>
-        <span class="ce">conversar?</span>
-      </h2>
-      <p class="contact-sub">Aberto a colaborações, freelas e boas ideias.</p>
-      <div class="contact-btns">
-        <a class="cbtn cbtn-primary" href="https://github.com/luksn02" target="_blank" rel="noopener">↗ GitHub</a>
-        <a class="cbtn cbtn-ghost" href="https://discord.com/users/luka_00000" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M4 20V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H8l-4 4Z"/>
-          </svg>
-          Discord
-        </a>
-        <a class="cbtn cbtn-ghost" href="mailto:trajano.neves01@gmail.com">
-          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <rect x="3" y="5" width="18" height="14" rx="2"/>
-            <path d="m3.5 6 8.5 7 8.5-7"/>
-          </svg>
-          Email
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <p>Feito por <span>Lucas Neves</span> · São Paulo, BR</p>
-    <div class="footer-line">
-      <p>© 2026</p>
-      <div class="f-dot"></div>
-      <p><span>lucas.dev</span></p>
-    </div>
-  </footer>
-
-</div>
 <script src="script.js"></script>
 </body>
 </html>
